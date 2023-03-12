@@ -1,0 +1,71 @@
+<!-- 自定义顶部栏 -->
+<view class="index">
+<view class="nav-bar" style="height:{{titleHeight}}rpx;"></view>
+<view class="search-wrap flex">
+  <view class="city"><text>武汉</text><text class="down-icon"></text></view>
+  <view class='searchItem'>
+      <image src='../../images/search-icon.png' />
+      <input placeholder='搜索目的地'></input>
+  </view>
+</view>
+<view class="nav-list flex" bindtap="navListTap">
+  <view class="item-nav">
+    <image class="nav-list-icon" src="../../images/vip.png"/>
+    <view class="name">电站搜索</view>
+  </view>
+  <view class="item-nav">
+    <image class="nav-list-icon" src="../../images/excharge.png"/>
+    <view class="name">充值</view>
+  </view>
+  <view class="item-nav">
+    <image class="nav-list-icon" src="../../images/mall.png"/>
+    <view class="name">我的收藏</view>
+  </view>
+</view>
+<view class="filter-1 flex">
+  <view class="item-filter-1 actvie">
+    距离最近
+  </view>
+  <view class="item-filter-1">
+    价格最低
+  </view>
+</view>
+<view class="filter-2 flex"  bindtap="navListTap">
+  <view class="item-filter actvie">可换电</view>
+  <view class="item-filter">营业中</view>
+  <view class="item-filter">免费停车</view>
+  <view class="item-filter">免排队</view>
+  <view class="item-filter">平台优先</view>
+</view>
+  <view class="station-list">
+    <view class="item-station" wx:for="{{stationList}}" wx:key="index" bindtap="navListTap">
+        <view class="line-1">
+          <view class="name {{item.status ===  0 ?'disabled':''}}"><text wx:if="{{!item.status}}" class="status">维护中</text><text class="name-text">{{item.name}}</text></view>
+          <view>
+            <text class="rmb">￥</text>
+            <text class="price">{{item.price}}</text>
+            <text class="price-text">元/公里</text>
+          </view>
+        </view>
+        <view class="line-2">
+          <image class="address-icon" src="../../images/address.png" mode=""/>
+          <text class="address">{{item.address}}</text>
+        </view>
+        <view class="line-3">
+          <view class="excharge">
+            <image class="excharge-icon" src="../../images/excharge.png" mode=""/>
+            <text class="val">{{item.excharge}}</text>
+            <text class="text">可换</text>
+          </view>
+          <view class="distance">
+            <view class="nav-icon-wrap">
+              <image class="nav-icon" src="../../images/nav.png" mode=""/>
+            </view>
+            <text class="distance-text">{{item.distance}}</text>
+          </view>
+        </view>
+        
+    </view>
+  </view>
+</view>
+
